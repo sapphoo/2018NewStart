@@ -1,13 +1,3 @@
-## Datatype
-
-### primitive
-
-- Boolean
-- Null
-- Undefined
-- Number
-- String
-- Symbol
 
 ## Document
 
