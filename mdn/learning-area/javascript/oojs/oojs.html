@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function createNewPerson(name) {
+        var obj = {};
+        obj.name = name;
+        obj.greeting = function() {
+            alert('Hi! I\'m ' + this.name + '.');
+        }
+        return obj;
+    }
+
+    function Person(name) {
+        this.name = name;
+        this.greeting = function() {
+            alert('Hi! I\'m ' + this.name + '.');
+        };
+    }
+
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            first,
+            last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function() {
+            var call = 'He';
+            if (this.gender === 'female') {
+                call = 'She';
+            }
+            var interestsString = call + ' likes ';
+            var len = this.interests.length;
+            for (var i = 0; i < len; i++) {
+                interestsString += interests[i];
+                if (i !== len - 1) {
+                    interestsString += ' and ';
+                }
+            }
+            alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.' + interestsString + '.');
+        };
+        this.greeting = function() {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+    };
+</script>
+
+</html>
