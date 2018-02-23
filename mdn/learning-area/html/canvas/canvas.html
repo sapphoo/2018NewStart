@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Canvas tutorial</title>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById('tutorial');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = "rgb(200,0,0)";
+                ctx.fillRect(10, 10, 55, 50);
+
+                ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+                ctx.fillRect(30, 30, 55, 50);
+
+                ctx.clearRect(20, 20, 10, 10);
+
+                ctx.strokeRect(15, 15, 5, 5);
+                ctx.strokeRect(50, 50, 50, 50);
+
+                ctx.fillStyle = "rgba(0, 0, 100, 0.5)";
+                ctx.beginPath();
+                ctx.moveTo(75, 50);
+                ctx.lineTo(100, 75);
+                ctx.lineTo(100, 25);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(175, 175, 50, 0, Math.PI * 2, true); // 绘制
+                //ctx.moveTo(210, 175);
+                ctx.arc(175, 175, 35, 0, Math.PI, false);   // 口(顺时针)
+                //ctx.moveTo(165, 165);
+                ctx.arc(160, 165, 5, 0, Math.PI * 2, true);  // 左眼
+                //ctx.moveTo(195, 165);
+                ctx.arc(190, 165, 5, 0, Math.PI * 2, true);  // 右眼
+                ctx.stroke();
+            }
+        }
+    </script>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body onload="draw();">
+    <canvas id="tutorial" width="300" height="300">
+        in case of unsupport
+    </canvas>
+</body>
+
+</html>
