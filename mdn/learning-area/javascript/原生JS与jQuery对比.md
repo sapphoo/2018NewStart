@@ -49,6 +49,7 @@ e.querySelectorAll('li');
 ```
 // jQuery
 e.closest(".ancestor");
+e.closest(".ancestor", context);//
 
 // native - not ie
 e.closest(".ancestor");
