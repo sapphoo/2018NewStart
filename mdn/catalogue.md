@@ -11,3 +11,5 @@
 [HTTP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)
 
 [Ajax](https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX)
+
+[Web 技术文档](https://developer.mozilla.org/zh-CN/docs/Web)
