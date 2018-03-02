@@ -13,3 +13,5 @@
 [Ajax](https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX)
 
 [Web 技术文档](https://developer.mozilla.org/zh-CN/docs/Web)
+
+[18 个惊人的 Angular 开源项目](https://www.jianshu.com/p/c8d45d30f341)
