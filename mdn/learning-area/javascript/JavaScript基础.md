@@ -1,21 +1,53 @@
+# 语法
+## 变量声明提升(Variable hoisting)
+变量在声明之前也能够获取到，值为undefined
+## 函数提升（Function hoisting）
+函数生命会被提升到顶部，函数表达式不会
+
 # Datatype
 
 ## primitive
-
+六种原始数据类型
 - Boolean
-- Null
-- Undefined
+- Null  一个表明 null 值的特殊关键字
+- Undefined  变量未定义时的属性
 - Number
 - String
 - Symbol
 
 ## Object
+加上Object对象
 - 点表示法
 > 只能接受字面量的成员的名字，不接受变量作为名字(会自动把变量名作为成员名称)
 - 数组表示法
 - this
 > this指向 代码运行时所在的对象，在使用构造器动态创建一个对象时非常有用
 
+## 类型转换
+- string to number
+- - parseInt()和parseFloat()
+- - 单目加法运算符
+```
+"1.1" + "1.1" = "1.11.1"
+(+"1.1") + (+"1.1") = 2.2
+```
+
+## 流程控制
+### false
+下面这些值将被计算出false
+- false
+- undefined
+- null
+- 0
+- NaN
+- 空字符串（""）
+
+请不要混淆原始的布尔值true和false 与 Boolean对象的真和假。例如：
+```
+var b = new Boolean(false);
+if (b) // this condition evaluates to true
+if (b == true) // this condition evaluates to false
+```
 ## OOJS
 - 构建函数
 > 一个用来 定义对象和他们的特征 的特殊函数。
