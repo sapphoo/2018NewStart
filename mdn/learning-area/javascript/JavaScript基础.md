@@ -32,6 +32,27 @@
 (+"1.1") + (+"1.1") = 2.2
 ```
 
+# 字面量
+- 数组字面量(Array literals)
+- 布尔字面量(Boolean literals)
+- 浮点数字面量(Floating-point literals)
+- 整数(Intergers)
+- 对象字面量(Object literals)
+- RegExp literals
+- 字符串字面量(String literals)
+## 对象字面量
+```
+var foo = {a: "alpha", "b": "beta", 2: "two"};
+console.log(foo.a);    // alpha
+console.log(foo.b);    // beta
+console.log(foo[2]);   // two
+//console.log(foo.2);  // Error: missing ) after argument list
+//console.log(foo[a]); // Error: a is not defined
+console.log(foo["a"]); // alpha
+console.log(foo["b"]); // beta
+console.log(foo["2"]); // two
+```
+
 ## 流程控制
 ### false
 下面这些值将被计算出false
