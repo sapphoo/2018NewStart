@@ -53,8 +53,8 @@ console.log(foo["b"]); // beta
 console.log(foo["2"]); // two
 ```
 
-## 流程控制
-### false
+# 流程控制
+## false
 下面这些值将被计算出false
 - false
 - undefined
@@ -69,7 +69,150 @@ var b = new Boolean(false);
 if (b) // this condition evaluates to true
 if (b == true) // this condition evaluates to false
 ```
-## OOJS
+
+## for...in & for...of
+```
+let arr = [3, 5, 7];
+arr.foo = "hello";
+
+for (let i in arr) {
+   console.log(i); // logs "0", "1", "2", "foo"
+}
+
+for (let i of arr) {
+   console.log(i); // logs "3", "5", "7" // 注意这里没有 hello
+}
+```
+# 函数
+## 作用域和函数堆栈
+### 递归
+```
+var foo = function bar() {
+   // statements go here
+};
+
+//在这个函数体内，以下的语句是等价的：
+bar()
+arguments.callee()
+foo()
+```
+将递归算法转换为非递归算法是可能的，不过逻辑上通常会更加复杂，而且需要使用堆栈。事实上，递归函数就使用了堆栈：函数堆栈。
+
+### 嵌套函数和闭包
+
+你可以在一个函数里面嵌套另外一个函数。嵌套（内部）函数对其容器（外部）函数是私有的。它自身也形成了一个闭包。一个闭包是一个可以自己拥有独立的环境与变量的的表达式（通常是函数）。
+
+既然嵌套函数是一个闭包，就意味着一个嵌套函数可以”继承“容器函数的参数和变量。换句话说，内部函数包含外部函数的作用域。
+
+可以总结如下：
+
+内部函数只可以在外部函数中访问。
+内部函数形成了一个闭包：它可以访问外部函数的参数和变量，但是外部函数却不能使用它的参数和变量。
+
+## 闭包
+
+闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数可以访问定义在外部函数中的所有变量和函数，以及外部函数能访问的所有变量和函数。但是，外部函数却不能够访问定义在内部函数中的变量和函数。这给内部函数的变量提供了一定的安全性。此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数将的生存周期比内部函数执行时间长。当内部函数以某一种方式被任何一个外部函数作用域访问时，一个闭包就产生了。
+```
+var createPet = function(name) {
+  var sex;
+  
+  return {
+    setName: function(newName) {
+      name = newName;
+    },
+    
+    getName: function() {
+      return name;
+    },
+    
+    getSex: function() {
+      return sex;
+    },
+    
+    setSex: function(newSex) {
+      if(typeof newSex == "string" 
+        && (newSex.toLowerCase() == "male" || newSex.toLowerCase() == "female")) {
+        sex = newSex;
+      }
+    }
+  }
+}
+
+var pet = createPet("Vivie");
+pet.getName();                  // Vivie
+
+pet.setName("Oliver");
+pet.setSex("male");
+pet.getSex();                   // male
+pet.getName();                  // Oliver
+```
+在上面的代码中，外部函数的name变量对内嵌函数来说是可取得的，而除了通过内嵌函数本身，没有其它任何方法可以取得内嵌的变量。内嵌函数的内嵌变量就像内嵌函数的保险柜。它们会为内嵌函数保留“稳定”——而又安全——的数据参与运行。而这些内嵌函数甚至不会被分配给一个变量，或者不必一定要有名字。
+```
+var getCode = (function(){
+  var secureCode = "0]Eal(eh&2";    // A code we do not want outsiders to be able to modify...
+  
+  return function () {
+    return secureCode;
+  };
+})();
+
+getCode();    // Returns the secret code
+```
+尽管有上述优点，使用闭包时仍然要小心避免一些陷阱。如果一个闭包的函数用外部函数的变量名定义了同样的变量，那在外部函数域将再也无法指向该变量。
+
+(作用域链：当同一个闭包作用域下两个参数或者变量同名时，就会产生命名冲突。更近的作用域有更高的优先权，所以最近的优先级最高，最远的优先级最低。这就是作用域链。链的第一个元素就是最里面的作用域，最后一个元素便是最外层的作用域。)
+```
+var createPet = function(name) {  // Outer function defines a variable called "name"
+  return {
+    setName: function(name) {    // Enclosed function also defines a variable called "name"
+      name = name;               // ??? How do we access the "name" defined by the outer function ???
+    }
+  }
+}
+```
+## 使用 arguments 对象
+函数的实际参数会被保存在一个类似数组的arguments对象中。
+
+使用arguments对象，你可以处理比声明的更多的参数来调用函数。这在你事先不知道会需要将多少参数传递给函数时十分有用。你可以用arguments.length来获得实际传递给函数的参数的数量，然后用arguments对象来取得每个参数。
+
+## 函数参数
+从ECMAScript 6开始，有两个新的类型的参数：默认参数，剩余参数。
+### 默认参数
+在JavaScript中，函数参数的默认值是undefined。然而，在某些情况下设置不同的默认值是有用的。
+### 剩余参数
+剩余参数语法允许将不确定数量的参数表示为数组。
+
+## 箭头函数表达式
+箭头函数表达式（也称胖箭头函数）相比函数表达式具有较短的语法并以词法的方式绑定 this。箭头函数总是匿名的。
+### 更简洁
+```
+var a = ["Hydrogen","Helium","Lithium","Beryllium"];
+
+var a2 = a.map(function(s){ return s.length });
+
+console.log(a2); // logs [ 8, 6, 7, 9 ]
+
+var a3 = a.map( s => s.length );
+
+console.log(a3); // logs [ 8, 6, 7, 9 ]
+```
+### this
+在箭头函数出现之前，每一个新函数都重新定义了自己的 this 值.
+```
+function Person(){
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++; // |this| properly refers to the person object
+  }, 1000);
+}
+
+var p = new Person();
+```
+
+## 预定义函数
+
+# OOJS
 - 构建函数
 > 一个用来 定义对象和他们的特征 的特殊函数。
 >
@@ -81,9 +224,9 @@ if (b == true) // this condition evaluates to false
 - 多态
 > 多个对象拥有实现共同方法的能力
 
-### Prototype
+## Prototype
 > 通过原型这种机制，JavaScript 中的对象从其他对象继承功能特性；这种继承机制与经典的面向对象编程语言的继承机制不同
-#### 基于原型的语言
+### 基于原型的语言
  JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)
 
 准确地说，这些属性和方法定义在Object的构造器函数(constructor functions)之上的prototype属性上，而非对象实例本身。
@@ -91,16 +234,16 @@ if (b == true) // this condition evaluates to false
  在传统的 OOP 中，首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是__proto__属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。
 
 >注意1: 理解对象的原型（可以通过Object.getPrototypeOf(obj)或者已被弃用的__proto__属性获得）与构造函数的prototype属性之间的区别是很重要的。前者是每个实例上都有的属性，后者是构造函数的属性。也就是说，Object.getPrototypeOf(new Foobar())和Foobar.prototype指向着同一个对象。
-#### 理解原型对象
+### 理解原型对象
 >注意2:原型链中的方法和属性没有被复制到其他对象——它们被访问需要通过“原型链”的方式
 >
 >注意3:没有官方的方法用于直接访问一个对象的原型对象——原型链中的“连接”被定义在一个内部属性中，在 JavaScript 语言标准中用 [[prototype]] 表示（参见 ECMAScript）。然而，大多数现代浏览器还是提供了一个名为 __proto__ （前后各有2个下划线）的属性，其包含了对象的原型
-#### prototype属性：继承成员被定义的地方
+### prototype属性：继承成员被定义的地方
 继承的属性和方法是定义在 prototype 属性之上的（你可以称之为子命名空间 (sub namespace) ）——那些以 Object.prototype. 开头的属性，而非仅仅以 Object. 开头的属性。prototype 属性的值是一个对象，我们希望被原型链下游的对象继承的属性和方法，都被储存在其中。
 
 >!重要!：prototype 属性大概是 JavaScript 中最容易混淆的名称之一。你可能会认为，这个属性指向当前对象的原型对象，其实不是（还记得么？原型对象是一个内部对象，应当使用 __proto__ 访问）。prototype 属性包含（指向）一个对象，你在这个对象中定义需要被继承的成员。
 
-#### Object.create()
+### Object.create()
 通过此方法创建新的对象实例。
 
 `var person2 = Object.create(person1);`
@@ -108,10 +251,10 @@ if (b == true) // this condition evaluates to false
 这里以person1为原型对象创建了person2
 
 `person2.__proto__`
-#### constructor 属性
+### constructor 属性
 每个对象实例都具有 constructor 属性，它指向创建该实例的构造器函数。
 
-#### 修改原型
+### 修改原型
 向构造器的prototype中添加一个新的方法，能够动态的更新继承链。在这之前创建的对象实例也能够获得这个方法（其实也就是原型链的原理，下游的方法和属性不是通过复制而是通过上溯得到的）。
 `Person.prototype.farewell = funtion(){xxx}`
 
