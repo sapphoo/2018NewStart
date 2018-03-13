@@ -14,7 +14,9 @@
 - Number
 - String
 - Symbol
-
+> undefined代表一个意想不到没有的值。null代表预期没有的值。
+>
+> undefined 是全局对象的一个属性。null特指对象的值未设置
 ## Object
 加上Object对象
 - 点表示法
@@ -276,3 +278,19 @@ Test.prototype.y = function () { ... }
 
 // 等等……`
 ```
+
+# 表达式和运算符
+## 赋值运算符
+解构
+## 一元操作符
+### delete
+### typeof
+### void
+## 关系操作符
+### in
+属性名或者数组索引是否在对象中存在。
+### instanceof
+## 表达式
+### 基本表达式
+- this
+this关键字被用于指代当前的对象，通常，this指代的是方法中正在被调用的对象。
