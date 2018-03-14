@@ -350,7 +350,7 @@ sort() 也可以带一个回调函数来决定怎么比较数组元素。这个�
 ### Array.reduceRight(callback[, initalvalue]) 
 和 reduce()相似，但这从最后一个元素开始的。
 
-## array-like objects
+## Array-like objects
 eg:document.getElementsByTagName() 返回的 NodeList ;函数内部可用的 arguments 对象
 
 Array的原生(prototype)方法可以用来处理类似数组行为的对象，例如：
