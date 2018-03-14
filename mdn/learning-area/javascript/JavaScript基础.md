@@ -181,8 +181,22 @@ var createPet = function(name) {  // Outer function defines a variable called "n
 从ECMAScript 6开始，有两个新的类型的参数：默认参数，剩余参数。
 ### 默认参数
 在JavaScript中，函数参数的默认值是undefined。然而，在某些情况下设置不同的默认值是有用的。
+```js
+function multiply(a, b = 1) {
+  return a * b;
+}
+
+multiply(5, 1); // 5
+multiply(5);    // 5
+```
 ### 剩余参数
 剩余参数语法允许将不确定数量的参数表示为数组。
+```js
+function sortRestArgs(arg1,...theArgs) {
+  var sortedArgs = theArgs.sort();
+  return sortedArgs;
+}
+```
 
 ## 箭头函数表达式
 箭头函数表达式（也称胖箭头函数）相比函数表达式具有较短的语法并以词法的方式绑定 this。箭头函数总是匿名的。
@@ -294,3 +308,62 @@ Test.prototype.y = function () { ... }
 ### 基本表达式
 - this
 this关键字被用于指代当前的对象，通常，this指代的是方法中正在被调用的对象。
+
+# 索引集合类
+## API
+### Array.forEach()
+在数组定义时省略的元素不会在forEach遍历时被列出，但是手动赋值为undefined的元素是会被列出的
+### Array.concat() 
+连接两个数组并返回一个新的数组。
+### Array.join(deliminator)
+将数组的所有元素连接成一个字符串。
+### Array.shift() 
+从数组移出第一个元素，并返回该元素。
+### Array.slice(start_index, upto_index)
+从数组提取一个片段，并作为一个新数组返回。
+### Array.splice(index, count_to_remove, addElement1, addElement2, ...)
+从数组移出一些元素，（可选）并替换它们。
+### Array.reverse() 
+颠倒数组元素的顺序
+### Array.sort() 
+给数组元素排序
+
+sort() 也可以带一个回调函数来决定怎么比较数组元素。这个回调函数比较两个值，并返回3个值中的一个。-1,1,0.
+
+-1代表靠前，1代表靠后，0代表相等。
+### Array.indexOf(searchElement[, fromIndex]) 
+在数组中搜索searchElement 并返回第一个匹配的索引。
+### Array.lastIndexOf(searchElement[, fromIndex])
+和 indexOf 差不多，但这是从结尾开始，并且是反向搜索。
+### Array.forEach(callback[, thisObject]) 
+在数组每个元素项上执行callback。
+### Array.map(callback[, thisObject]) 
+遍历数组，并通过callback对数组元素进行操作，并将所有操作结果放入数组中并返回该数组
+### Array.filter(callback[, thisObject]) 
+返回一个包含所有在回调函数上返回为true的元素的新数组
+### Array.every(callback[, thisObject]) 
+当数组中每一个元素在callback上被返回true时就返回true
+### Array.some(callback[, thisObject]) 
+只要数组中有一项在callback上被返回true，就返回true
+### Array.reduce(callback[, initialValue]) 
+使用回调函数 callback(firstValue, secondValue) 把数组列表计算成一个单一值
+### Array.reduceRight(callback[, initalvalue]) 
+和 reduce()相似，但这从最后一个元素开始的。
+
+## array-like objects
+eg:document.getElementsByTagName() 返回的 NodeList ;函数内部可用的 arguments 对象
+
+Array的原生(prototype)方法可以用来处理类似数组行为的对象，例如：
+```js
+function printArguments() {
+  Array.forEach(arguments, function(item) {
+    console.log(item);
+  });
+}
+```
+在旧版本的Javascript中，使用call来进行常规方法调用可以模拟很多特性:
+```js
+Array.prototype.forEach.call(arguments, function(item) {
+  console.log(item);
+});
+```
