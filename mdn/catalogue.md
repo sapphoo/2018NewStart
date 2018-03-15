@@ -32,3 +32,5 @@
 [Can I use __?](https://caniuse.com/)
 
 [visualize languages](http://pythontutor.com/)
+
+[lambda-view](https://github.com/Jianru-Lin/lambda-view)

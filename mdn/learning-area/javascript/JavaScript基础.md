@@ -384,3 +384,63 @@ var interpolatedZeros = [c+'0' for (c of str) ].join(''); // 'a0b0c0d0e0f0'
 
 ## Typed Arrays 类型化数组
 JavaScript typed arrays 是类数组对象（array-like object），其提供访问原始二进制数据的机制。
+
+# 带键的集合
+## 映射
+### Map
+一个Map对象就是一个简单的键值对映射集合，可以按照数据插入时的顺序遍历所有的元素。
+```js
+var sayings = new Map();
+sayings.set('dog', 'woof');
+sayings.set('cat', 'meow');
+sayings.size; // 2
+sayings.get('fox'); // undefined
+sayings.has('bird'); // false
+sayings.delete('dog');
+sayings.has('dog'); // false
+
+for (var [key, value] of sayings) {
+  console.log(key + ' goes ' + value);
+}
+// "cat goes meow"
+// "elephant goes toot"
+
+sayings.clear();
+sayings.size; // 0
+```
+### Object vs. Map
+一般地，objects会被用于将字符串类型映射到数值。Object允许设置键值对、根据键获取值、删除键、检测某个键是否存在。而Map具有更多的优势。
+
+- Object的键均为Strings类型，在Map里键可以是任意类型。
+- 必须手动计算Object的尺寸，但是可以很容易地获取使用Map的尺寸。
+- Map的遍历遵循元素的插入顺序。
+- Object有原型，所以映射中有一些缺省的键。（可以理解为map = Object.create(null)）。
+
+## 集合
+### Set对象
+Set对象是一组值的集合，这些值是不重复的，可以按照添加顺序来遍历。
+```js
+var mySet = new Set();
+mySet.add(1);
+mySet.add("some text");
+mySet.add("foo");
+
+mySet.has(1); // true
+mySet.delete("foo");
+mySet.size; // 2
+
+for (let item of mySet) console.log(item);
+// 1
+// "some text"
+```
+### Array vs. Set
+```js
+Array.from(mySet);
+[...mySet2];
+
+mySet2 = new Set([1,1,2,3,4]);
+```
+- 数组中用于判断元素是否存在的indexOf 函数效率低下。
+- Set对象允许根据值删除元素，而数组中必须使用基于下标的 splice 方法。
+- 数组的indexOf方法无法找到NaN值。
+- Set对象存储不重复的值，所以不需要手动处理包含重复值的情况。
