@@ -350,7 +350,7 @@ sort() 也可以带一个回调函数来决定怎么比较数组元素。这个�
 ### Array.reduceRight(callback[, initalvalue]) 
 和 reduce()相似，但这从最后一个元素开始的。
 
-## Array-like objects
+## Array-like objects 类数组对象
 eg:document.getElementsByTagName() 返回的 NodeList ;函数内部可用的 arguments 对象
 
 Array的原生(prototype)方法可以用来处理类似数组行为的对象，例如：
@@ -367,3 +367,20 @@ Array.prototype.forEach.call(arguments, function(item) {
   console.log(item);
 });
 ```
+
+## 数组推导式
+在JavaScript 1.7 被介绍并计划在 ECMAScript 7, array comprehensions 被规范化并提供一个有用的快捷方式，用来实现如何在另一个数组的基础上构造一个新的数组。推导式可以经常被用在那些需要调用 map() 和 filter()函数的地方，或作为一种结合这两种方式。
+```js
+var numbers = [1, 2, 3, 21, 22, 30];
+var doubledEvens = [i * 2 for (i of numbers) if (i % 2 === 0)];
+console.log(doubledEvens); // logs 4,44,60
+```
+可以用于字符串
+```js
+var str = 'abcdef';
+var consonantsOnlyStr = [c for (c of str) if (!(/[aeiouAEIOU]/).test(c))  ].join(''); // 'bcdf'
+var interpolatedZeros = [c+'0' for (c of str) ].join(''); // 'a0b0c0d0e0f0'
+```
+
+## Typed Arrays 类型化数组
+JavaScript typed arrays 是类数组对象（array-like object），其提供访问原始二进制数据的机制。
