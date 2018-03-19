@@ -36,16 +36,45 @@ string.split(',')
 string.replace('aaa', 'bbb')//注意：并不会更改元字符串
 
 ## Array
-array.join(',')
 
-array.toString()
+Array.toString()
 
-array.push('aaa')
+Array.push('aaa')
 
-array.pop()
+Array.pop()
 
-array.unshift('aaa')
+Array.unshift('aaa')
 
-array.shift()
+Array.concat() 
+
+Array.join(deliminator)
+
+Array.shift() 
+
+Array.slice(start_index, upto_index)
+
+Array.splice(index, count_to_remove, addElement1, addElement2, ...)
+
+Array.reverse() 
+
+Array.sort() 
+
+Array.indexOf(searchElement[, fromIndex]) 
+
+Array.lastIndexOf(searchElement[, fromIndex])
+
+Array.forEach(callback[, thisObject]) 
+
+Array.map(callback[, thisObject]) 
+
+Array.filter(callback[, thisObject]) 
+
+Array.every(callback[, thisObject]) 
+
+Array.some(callback[, thisObject]) 
+
+Array.reduce(callback[, initialValue]) 
+
+Array.reduceRight(callback[, initalvalue]) 
 
 
