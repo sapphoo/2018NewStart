@@ -78,7 +78,7 @@ function EvilCircle(x, y, exists) {
     this.color = "white";
     this.size = 10;
     this.velX = 20;
-    this.vely = 20;
+    this.velY = 20;
 }
 
 EvilCircle.prototype.draw = function() {
@@ -110,13 +110,13 @@ EvilCircle.prototype.checkBounds = function() {
 EvilCircle.prototype.setControls = function() {
     var _this = this;
     window.onkeydown = function(e) {
-        if (e.keyCode === 65) {
+        if (e.keyCode === 65 || e.keyCode === 37) {
             _this.x -= _this.velX;
-        } else if (e.keyCode === 68) {
+        } else if (e.keyCode === 68 || e.keyCode === 39) {
             _this.x += _this.velX;
-        } else if (e.keyCode === 87) {
+        } else if (e.keyCode === 87 || e.keyCode === 38) {
             _this.y -= _this.velY;
-        } else if (e.keyCode === 83) {
+        } else if (e.keyCode === 83 || e.keyCode === 40) {
             _this.y += _this.velY;
         }
     }
@@ -138,7 +138,9 @@ EvilCircle.prototype.collisionDetect = function() {
     }
 }
 
+var evilCircle = new EvilCircle(500, 600, true);
 
+evilCircle.setControls();
 
 //动起来
 var balls = [];
@@ -146,10 +148,6 @@ var balls = [];
 function loop() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
     ctx.fillRect(0, 0, width, height);
-
-    var evilCircle = new EvilCircle(500, 600, true);
-
-    evilCircle.setControls();
 
     while (balls.length < 25) {
         var ball = new Ball(
@@ -174,10 +172,11 @@ function loop() {
             balls[i].update();
             balls[i].collisionDetect();
         }
-        evilCircle.draw();
-        evilCircle.checkBounds();
-        evilCircle.collisionDetect();
+
     }
+    evilCircle.draw();
+    evilCircle.checkBounds();
+    evilCircle.collisionDetect();
     document.getElementsByTagName("p")[0].textContent = "ball count:" + length;
 
     requestAnimationFrame(loop);
