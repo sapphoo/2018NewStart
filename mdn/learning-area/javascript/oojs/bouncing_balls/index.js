@@ -29,7 +29,7 @@ function Ball(x, y, velX, velY, color, size, exists) {
 }
 
 //绘制
-Ball.prototype.draw = function () {
+Ball.prototype.draw = function() {
     ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
@@ -37,7 +37,7 @@ Ball.prototype.draw = function () {
 }
 
 //更新数据
-Ball.prototype.update = function () {
+Ball.prototype.update = function() {
     if ((this.x + this.size) >= width) {
         this.velX = -(this.velX);
     }
@@ -58,6 +58,21 @@ Ball.prototype.update = function () {
     this.y += this.velY;
 }
 
+//撞击检测
+Ball.prototype.collisionDetect = function() {
+    for (var j = 0; j < balls.length; j++) {
+        if (!(this === balls[j])) {
+            var dx = this.x - balls[j].x;
+            var dy = this.y - balls[j].y;
+            var distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < this.size + balls[j].size) {
+                balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
+            }
+        }
+    }
+}
+
 function EvilCircle(x, y, exists) {
     Shape.call(this, x, y, exists);
     this.color = "white";
@@ -66,7 +81,7 @@ function EvilCircle(x, y, exists) {
     this.vely = 20;
 }
 
-EvilCircle.prototype.draw = function () {
+EvilCircle.prototype.draw = function() {
     ctx.beginPath();
     ctx.lineWidth = 3;
     ctx.strokeStyle = this.color;
@@ -74,7 +89,7 @@ EvilCircle.prototype.draw = function () {
     ctx.stroke();
 }
 
-EvilCircle.prototype.checkBounds = function () {
+EvilCircle.prototype.checkBounds = function() {
     if ((this.x + this.size) >= width) {
         this.x -= this.x + this.size - width;
     }
@@ -92,22 +107,38 @@ EvilCircle.prototype.checkBounds = function () {
     }
 }
 
-
+EvilCircle.prototype.setControls = function() {
+    var _this = this;
+    window.onkeydown = function(e) {
+        if (e.keyCode === 65) {
+            _this.x -= _this.velX;
+        } else if (e.keyCode === 68) {
+            _this.x += _this.velX;
+        } else if (e.keyCode === 87) {
+            _this.y -= _this.velY;
+        } else if (e.keyCode === 83) {
+            _this.y += _this.velY;
+        }
+    }
+}
 
 //撞击检测
-Ball.prototype.collisionDetect = function () {
+EvilCircle.prototype.collisionDetect = function() {
     for (var j = 0; j < balls.length; j++) {
-        if (!(this === balls[j])) {
+        if (balls[j].exists === true) {
             var dx = this.x - balls[j].x;
             var dy = this.y - balls[j].y;
             var distance = Math.sqrt(dx * dx + dy * dy);
 
             if (distance < this.size + balls[j].size) {
-                balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
+                balls[j].exists = false;
             }
         }
+
     }
 }
+
+
 
 //动起来
 var balls = [];
@@ -115,6 +146,10 @@ var balls = [];
 function loop() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
     ctx.fillRect(0, 0, width, height);
+
+    var evilCircle = new EvilCircle(500, 600, true);
+
+    evilCircle.setControls();
 
     while (balls.length < 25) {
         var ball = new Ball(
@@ -129,13 +164,23 @@ function loop() {
         balls.push(ball);
     }
 
-    for (var i = 0; i < balls.length; i++) {
-        balls[i].draw();
-        balls[i].update();
-        balls[i].collisionDetect();
-    }
+    var length = 0;
 
-    //requestAnimationFrame(loop);
+    for (var i = 0; i < balls.length; i++) {
+
+        if (balls[i].exists === true) {
+            length++;
+            balls[i].draw();
+            balls[i].update();
+            balls[i].collisionDetect();
+        }
+        evilCircle.draw();
+        evilCircle.checkBounds();
+        evilCircle.collisionDetect();
+    }
+    document.getElementsByTagName("p")[0].textContent = "ball count:" + length;
+
+    requestAnimationFrame(loop);
 }
 
 loop();
