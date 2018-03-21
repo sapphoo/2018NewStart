@@ -1,3 +1,4 @@
+var count = 0;
 // setup canvas
 
 var canvas = document.querySelector('canvas');
@@ -132,13 +133,14 @@ EvilCircle.prototype.collisionDetect = function() {
 
             if (distance < this.size + balls[j].size) {
                 balls[j].exists = false;
+                count--;
             }
         }
 
     }
 }
 
-var evilCircle = new EvilCircle(500, 600, true);
+var evilCircle = new EvilCircle(random(0, width), random(0, height), true);
 
 evilCircle.setControls();
 
@@ -160,14 +162,12 @@ function loop() {
             true
         );
         balls.push(ball);
+        count++;
     }
-
-    var length = 0;
 
     for (var i = 0; i < balls.length; i++) {
 
         if (balls[i].exists === true) {
-            length++;
             balls[i].draw();
             balls[i].update();
             balls[i].collisionDetect();
@@ -177,7 +177,7 @@ function loop() {
     evilCircle.draw();
     evilCircle.checkBounds();
     evilCircle.collisionDetect();
-    document.getElementsByTagName("p")[0].textContent = "ball count:" + length;
+    document.getElementsByTagName("p")[0].textContent = "ball count:" + count;
 
     requestAnimationFrame(loop);
 }

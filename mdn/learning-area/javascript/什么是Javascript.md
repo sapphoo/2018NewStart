@@ -13,12 +13,24 @@ JavaScript 是一门跨平台、面向对象的轻量级脚本语言。 在宿�
 ### 浏览器APIs(Browser APIs) 
 - 文档对象模型API[DOM(Document Object Model) API]
 > 操作HTML和CSS
-- 地理定位API[Geolocation API]
-> 获取地理信息
+- 从服务器获取数据的API
+> XMLHttpRequest
+>
+> Fetch API
 - 画布[Canvas]和WebGL APIs
 > 创建2D和3D图像
 - 音像和影像APIs[Audio and Video APIs],eg:HTMLMediaElement、WebRTC
 > 用多媒体做一些事情
+- 设备API
+> 地理定位API(Geolocation API)
+
+> 系统通知（Notifications API）
+
+> 振动硬件（Vibration API
+- 客户端存储API
+> Web Storage API: 简单的键 - 值存储
+
+> IndexedDB API: 更复杂的表格数据存储
 ### 第三方 APIs (Third party APIs) 
 - 推特API[Twitter API]
 - 谷歌地图API[Google Maps API]
