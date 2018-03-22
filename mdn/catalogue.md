@@ -36,3 +36,9 @@
 [lambda-view](https://github.com/Jianru-Lin/lambda-view)
 
 [Live DOM viewer](https://software.hixie.ch/utilities/js/live-dom-viewer/)
+
+# 网站
+[hongkiat](https://www.hongkiat.com/blog/category/coding/)
+
+# 书籍
+[node入门](https://www.nodebeginner.org/index-zh-cn.html)
