@@ -55,13 +55,53 @@
 
 ## 高级概念
 ### 回调
-### 同步/异步
+```js
+function print(something){
+    console.log(something);
+}
+function we(callback, something){
+    something += " is cool";
+    callback(something);
+}
+we(print, "Nodejs");
+we(function(something){
+    console.log(something);
+}, "jade");
+```
+### 同步/异步  sync/async
+js是单线程的，代码是顺序执行的
+同步：代码的顺序和执行的顺序一致
+异步：代码的顺序和执行的顺序不一定一致
+
 ### I/O
-### 单线程/多线程
-### 阻塞/非阻塞
-### 事件
+向文件系统、数据库之类的资源提供接口。
+
+### 单线程/多线程 
+单线程：一次只能谈一个女友。但是可能被一个任务堵死。
+多线程：一次可以谈多个女友。但是资源的调度可能出现问题。
+
+### 阻塞/非阻塞 Block/Unblock
+阻塞：定座位时把自己挂起
+非阻塞：定座位之后挂电话，想干嘛干嘛
+
+### 事件 Event
+EventEmitter
+
 ### 事件驱动
+函数执行的一种方式
+
 ### 基于事件驱动的回调
-### 事件循环
+注册回调
+
+### 事件循环 Event Loop
+如果大量的异步操作来在完成密集任务的同时不会阻塞程序执行，需要有一个机制管理。
+FIFO的任务队列。
+
+### 作用域
+调用函数、访问变量的能力有关
+### 上下文
+this相关
+
+
 
 
