@@ -1,11 +1,18 @@
+# mdn
+
 [学习Web开发](https://developer.mozilla.org/zh-CN/docs/learn)
 
 [术语表](https://developer.mozilla.org/zh-CN/docs/Glossary)
 
 [Web开发者指南](https://developer.mozilla.org/zh-CN/docs/Web/Guide)
 
+
+## css
+[各种常见页面布局+知名网站实例分析+相关阅读推荐](https://github.com/Sweet-KK/css-layout)
+
 [CSS 布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout)
 
+## javascript
 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript) {2018-03-05~2018-03-09}
 
 [You-Dont-Need-jQuery](https://github.com/nefe/You-Dont-Need-jQuery) {2018-03-05~2018-03-09}
@@ -24,9 +31,16 @@
 
 [Web 技术文档](https://developer.mozilla.org/zh-CN/docs/Web)
 
-[18 个惊人的 Angular 开源项目](https://www.jianshu.com/p/c8d45d30f341)
-
 [RegExp](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+# 谷歌开发者
+[main](https://developers.google.com/web/fundamentals/)
+
+# 浏览器
+[浏览器的工作原理](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)
+
+# 开源项目
+[18 个惊人的 Angular 开源项目](https://www.jianshu.com/p/c8d45d30f341)
 
 # 工具
 [Can I use __?](https://caniuse.com/)
@@ -47,7 +61,9 @@
 
 [autoprefixerOnline](http://autoprefixer.github.io/)
 
-# 网站
+# 社区
+[掘金](https://juejin.im/timeline/frontend)
+
 [hongkiat](https://www.hongkiat.com/blog/category/coding/)
 
 # 书籍

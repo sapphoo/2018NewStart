@@ -94,13 +94,59 @@ EventEmitter
 注册回调
 
 ### 事件循环 Event Loop
-如果大量的异步操作来在完成密集任务的同时不会阻塞程序执行，需要有一个机制管理。
+如果大量的异步操作来在完成密集任务的同时不会阻塞程序执行，需要有一个机制管理--时间循环。
+
 FIFO的任务队列。
 
 ### 作用域
 调用函数、访问变量的能力有关
 ### 上下文
-this相关
+代表this的指向。this指向函数的拥有者，只能在函数内部使用，在函数执行时被赋值。
+
+全局上下文中，this指向全局对象，无论是严格与非严格模式。（浏览器中是window，nodejs中是global）
+
+函数上下文中，this的值取决于函数被调用的方式。
+
+#### call() & apply()
+能够改变函数的上下文执行对象
+```js
+var pet = {
+    words: '...',
+    speaks: function(){
+        console.log(this.words);
+    }
+};
+
+pet.speaks();
+
+var dog = {
+    words: 'wang'
+};
+
+pet.speaks.call(dog);
+
+```
+```js
+function pet(words){
+    this.words = words;
+    this.speaks = function(){
+        console.log(this.words);
+    }
+};
+
+function dog(words){
+    pet.call(this, words);
+}
+
+var dog1 = new dog('wang');
+
+dog1.speaks();
+```
+
+
+
+
+
 
 
 
