@@ -1,0 +1,74 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "es6 webpack init project",
+  "main": "./app/main.js",
+  "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sapphoo/2018NewStart.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sapphoo/2018NewStart/mdn/learning-area/javascript/ES6/issues"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "extends": [
+      "mysticatea",
+      "mysticatea/modules"
+    ],
+    "plugins": [
+      "html"
+    ],
+    "env": {
+      "browser": false
+    },
+    "globals": {
+      "applicationCache": false,
+      "atob": false,
+      "btoa": false,
+      "console": false,
+      "document": false,
+      "location": false,
+      "window": false
+    },
+    "parser": "babel-eslint"
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "webpack.config.js"
+  ],
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "homepage": "https://github.com/sapphoo/2018NewStart/mdn/learning-area/javascript/ES6#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "eslint": "^3.19.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-html": "^4.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.5"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "eslint-config-mysticatea": "^12.0.0"
+  }
+}
