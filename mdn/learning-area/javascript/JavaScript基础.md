@@ -42,6 +42,7 @@
 - 对象字面量(Object literals)
 - RegExp literals
 - 字符串字面量(String literals)
+
 ## 对象字面量
 ```
 var foo = {a: "alpha", "b": "beta", 2: "two"};

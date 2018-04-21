@@ -143,6 +143,18 @@ var dog1 = new dog('wang');
 dog1.speaks();
 ```
 
+# 常用命令
+
+## npm安装
+```
+npm install --save-dev webpack
+```
+
+## npm查看和设置代理
+```
+npm config get http-proxy
+npm config set http-proxy http://user:password@proxy.yourname.com:8080
+```
 
 
 

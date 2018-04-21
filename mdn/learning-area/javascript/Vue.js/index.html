@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue入门</title>
+    <script src="./Vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+         <div v-bind:title='123 + "title"'>{{message}}</div> 
+         <input type="text" v-model="input_content">
+         <div>{{input_content}}</div>
+    </div>
+    <script>
+        new Vue({
+            el: "#root",
+            data: {
+                message: 'hello world',
+                content: '<h1>hello</h1>',
+                title: 'this is vue title',
+                input_content: 'input content'
+            },
+            methods: {
+                handleClick: function(){
+                    this.message = "hello"
+                }
+            }
+        })
+
+    </script>
+    <!-- <script src="./main.js"></script> -->
+</body>
+
+</html>
