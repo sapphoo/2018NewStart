@@ -22,6 +22,18 @@ Git的三个配置文件读取优先级：版本库级别配置文件>全局配�
 系统级别配置文件:包含了适用于系统所有用户和所有库的值
 
 ### 避免每次push都需要输入用户名和密码
+#### 方法一
 ```
 git remote set-url origin git@github.com:username/repo.git
+```
+
+#### 方法二
+```
+$ git config credential.helper store
+$ git push https://github.com/repo.git
+
+Username for 'https://github.com': <USERNAME>
+Password for 'https://USERNAME@github.com': <PASSWORD>
+
+git config --global credential.helper 'cache --timeout 7200'
 ```
