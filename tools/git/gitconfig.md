@@ -1,4 +1,4 @@
-### 打开三种配置文件的方法
+## 打开三种配置文件的方法
 
 执行下面这个命令：如果是Linux将打开 `/工作区目录/.git/config`文件, 如果是Windows:与Linux一样 
 git config -e（打开版本库级别配置文件）
@@ -15,8 +15,34 @@ Git的三个配置文件读取优先级：版本库级别配置文件>全局配�
 
 版本库级别配置文件会覆盖全局配置文件，全局配置文件覆盖系统级别配置文件，仅覆盖相同的值。
 
-### 三个配置文件的作用
+## 三个配置文件的作用
 
 版本库级别配置文件:无论你当前在用的库是什么，特定指向该单一的库 
 全局配置文件:所有用户共同的配置 
 系统级别配置文件:包含了适用于系统所有用户和所有库的值
+
+<<<<<<< HEAD
+### git查看及配置代理
+```
+//查看
+git config --global http.proxy
+//配置
+git config --global http.proxy http://user:password@proxy.yourname.com:8080
+=======
+### 避免每次push都需要输入用户名和密码
+#### 方法一
+```
+git remote set-url origin git@github.com:username/repo.git
+```
+
+#### 方法二
+```
+$ git config credential.helper store
+$ git push https://github.com/repo.git
+
+Username for 'https://github.com': <USERNAME>
+Password for 'https://USERNAME@github.com': <PASSWORD>
+
+git config --global credential.helper 'cache --timeout 7200'
+>>>>>>> ce6502c14fa8401c6644223ebccd0f7a32df6e4f
+```
