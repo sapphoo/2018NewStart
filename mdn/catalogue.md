@@ -12,6 +12,8 @@
 
 [CSS 布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout)
 
+[自适应设计与响应式网页设计浅谈](http://www.alloyteam.com/2015/04/zi-shi-ying-she-ji-yu-xiang-ying-shi-wang-ye-she-ji-qian-tan/)
+
 ## javascript
 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript) {2018-03-05~2018-03-09}
 
