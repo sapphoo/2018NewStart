@@ -21,14 +21,14 @@ Git的三个配置文件读取优先级：版本库级别配置文件>全局配�
 全局配置文件:所有用户共同的配置 
 系统级别配置文件:包含了适用于系统所有用户和所有库的值
 
-<<<<<<< HEAD
+
 ### git查看及配置代理
 ```
 //查看
 git config --global http.proxy
 //配置
 git config --global http.proxy http://user:password@proxy.yourname.com:8080
-=======
+
 ### 避免每次push都需要输入用户名和密码
 #### 方法一
 ```
@@ -44,5 +44,5 @@ Username for 'https://github.com': <USERNAME>
 Password for 'https://USERNAME@github.com': <PASSWORD>
 
 git config --global credential.helper 'cache --timeout 7200'
->>>>>>> ce6502c14fa8401c6644223ebccd0f7a32df6e4f
+
 ```
