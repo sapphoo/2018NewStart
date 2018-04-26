@@ -15,6 +15,7 @@ app.directive('beauty', function () {
         }
     };
 });
+documen
 
 function baseUrl() {
     var scripts = document.getElementsByTagName('script');
