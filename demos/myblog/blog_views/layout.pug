@@ -1,0 +1,15 @@
+doctype
+html
+    head
+        title #{title}
+
+        meta(charset="utf-8")
+        meta(name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no')
+
+        link(href='/bootstrap/dist/css/bootstrap.min.css', rel="stylesheet")
+        block other_css
+        
+        script(src='/jquery/dist/jquery.min.js')
+        script(href='/bootstrap/dist/js/bootstrap.min.js')
+    body 
+        block content
