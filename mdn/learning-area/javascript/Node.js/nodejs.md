@@ -77,21 +77,25 @@
         <td>错误码</td>
         <td>描述</td>
         <td>原因</td>
+        <td>解决方法</td>
     </tr>
     <tr>
         <td>500</td>
         <td>服务器端发生一个不可预期的错误</td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
         <td>502</td>
-        <td></td>
-        <td></td>
+        <td>Bad Gateway</td>
+        <td>连接超时，服务器当前链接太多，导致无法给出正常响应</td>
+        <td>Ctrl+F5,从服务器重新拉去数据</td>
     </tr>
     <tr>
         <td>503</td>
         <td>服务器端暂时不能提供服务，过阵子才会恢复正常</td>
         <td>暂时处于超负载或者正在停机维护</td>
+        <td></td>
     </tr>
     
 </table>
