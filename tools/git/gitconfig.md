@@ -28,7 +28,7 @@ Git的三个配置文件读取优先级：版本库级别配置文件>全局配�
 git config --global http.proxy
 //配置
 git config --global http.proxy http://user:password@proxy.yourname.com:8080
-
+```
 ### 避免每次push都需要输入用户名和密码
 #### 方法一
 ```
@@ -45,4 +45,11 @@ Password for 'https://USERNAME@github.com': <PASSWORD>
 
 git config --global credential.helper 'cache --timeout 7200'
 
+```
+
+### git切换到固定tag/release
+```
+$ git checkout tags/<tag_name>
+
+$ git checkout tags/<tag_name> -b <branch_name>
 ```
