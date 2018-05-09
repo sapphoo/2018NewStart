@@ -2,7 +2,7 @@
 ## 变量声明提升(Variable hoisting)
 变量在声明之前也能够获取到，值为undefined
 ## 函数提升（Function hoisting）
-函数生命会被提升到顶部，函数表达式不会
+函数声明会被提升到顶部，函数表达式不会
 
 # Datatype
 
@@ -89,7 +89,7 @@ for (let i of arr) {
 # 函数
 ## 作用域和函数堆栈
 ### 作用域
-ECMAScript 6 之前的JavaScript没有 语句块 作用域；相反，语句块中声明的变量将成为语句块所在代码段的局部变量。（函数或者全局范围）
+ECMAScript 6 之前的JavaScript拥有函数作用域，没有块作用域，且通过指针（而非复制）将变量传入一个函数闭包；相反，语句块中声明的变量将成为语句块所在代码段的局部变量。（函数或者全局范围）
 ### 递归
 ```
 var foo = function bar() {
@@ -226,13 +226,66 @@ function Person(){
   }, 1000);
 }
 
+
 var p = new Person();
 ```
 
 ## 预定义函数
 
 ## 特殊形式
-### IIFE
+### IIFE 立即调用执行函数
+- 理解：ECMAScript 6 之前的JavaScript拥有函数作用域，没有块作用域，且通过指针（而非复制）将变量传入一个函数闭包；
+- 作用：
+  1. 令函数中声明的变量绕过JavaScript的变量置顶声明规则。
+  1. 避免新的变量被解释成全局变量或函数名占用全局变量名。
+  1. 能够在禁止访问函数内声明变量的情况下允许外部对函数的调用。
+  ```js
+  //1
+  var v, getValue;
+  v = 1;
+  getValue = function(){return v;}
+  v = 2;
+  getValue();//2
+
+  var v, getValue;
+  v = 1;
+  getValue = (function(x){
+    return function(){return x;};
+    })(v);
+  //这里函数将v作为参数传递，之后立即执行，就保存了内部函数的执行上下文。
+  v = 2;
+  getValue();//1
+
+  //2
+  (function(){
+    // all your code here
+    var foo = function() {};
+    window.onload = foo;
+    // ...
+  })();
+  // foo is unreachable here (it’s undefined)
+
+  //3
+  var counter = (function(){
+    var i = 0;
+    return {
+      get: function(){
+        return i;
+      },
+      set: function(x){
+        i = x;
+      },
+      increment: function(){
+        return i++;
+      }
+    }
+  })();
+  counter.get(); // 0
+  counter.set( 3 );
+  counter.increment(); // 4
+  counter.increment(); // 5
+  ```
+
 
 
 # OOJS

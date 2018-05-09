@@ -746,16 +746,6 @@ IE9+ 请使用 [github/fetch](http://github.com/github/fetch)，IE8+ 请使用 [
   //
   ```
   >注意：有一种写法很confusing，这种写法为IIFE，通常用于避免污染global namespace
-  ```js
-  (function(){
-    // all your code here
-    var foo = function() {};
-    window.onload = foo;
-    // ...
-  })();
-  // foo is unreachable here (it’s undefined)
-  ```
-
 - [5.1](#5.1) <a name='5.1'></a> 使用 on 绑定事件
 
   ```js
