@@ -1,5 +1,5 @@
 #carousels_div {
-    width: 800px;
+    width: 1000px;
     height: 600px;
     margin: 0 auto;
     overflow: hidden;
@@ -11,8 +11,14 @@
     height: 600px;
 }
 
-#pic_div img {
+#pic_div div {
     float: left;
+}
+
+#pic_div div img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 #dot_list {
