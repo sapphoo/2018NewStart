@@ -1,0 +1,38 @@
+#carousels_div {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+#pic_div {
+    width: 99999px;
+    height: 600px;
+}
+
+#pic_div img {
+    float: left;
+}
+
+#dot_list {
+    /* width: 200px; */
+    height: 20px;
+    line-height: 20px;
+    list-style: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#dot_list li {
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 10px;
+    display: inline-block;
+}
