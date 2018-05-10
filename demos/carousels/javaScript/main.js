@@ -13,6 +13,7 @@ window.onload = function() {
     var current_index = 0;
     var ul_len = dot_li.length;
 
+    //定时器，自动轮播
     var timer = setInterval(loop, 2000);
 
     function loop() {
@@ -33,6 +34,7 @@ window.onload = function() {
         dot_li[current_index].style.backgroundColor = "red";
     }
 
+    //鼠标移入停止轮播，移出继续
     carousels.addEventListener("mouseover", stopInterval, false);
 
     function stopInterval() {
@@ -49,6 +51,7 @@ window.onload = function() {
         right_btn.style.display = "none";
     }
 
+    //左右按钮控制轮播
     left_btn.addEventListener("click", carouselLeft, false);
 
     function carouselLeft() {
@@ -63,6 +66,7 @@ window.onload = function() {
         changeCarousel();
     }
 
+    //小圆点控制轮播
     for (var j = 0; j < ul_len; j++) {
         (function() {
             var k = j;
