@@ -729,8 +729,12 @@ IE9+ 请使用 [github/fetch](http://github.com/github/fetch)，IE8+ 请使用 [
   ```js
   // jQuery
   $(document).ready(eventHandler);
+  //eg
+  $(document).ready(function(){});
   // shorthand jQuery
   $(eventHandler);
+  //eg
+  $(function(){})
   // Native
   // 检测 DOMContentLoaded 是否已完成
   if (document.readyState === 'complete' || document.readyState !== 'loading') {
