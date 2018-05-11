@@ -25,6 +25,7 @@ Git的三个配置文件读取优先级：版本库级别配置文件>全局配�
 ### git查看及配置代理
 ```
 //查看
+vi .git/config
 git config --global http.proxy
 //配置
 git config --global http.proxy http://user:password@proxy.yourname.com:8080
