@@ -1,6 +1,6 @@
 #carousels_div {
-    width: 1000px;
-    height: 600px;
+    width: 1024px;
+    height: 768px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -8,37 +8,65 @@
 
 #pic_div {
     width: 99999px;
-    height: 600px;
+    height: 768px;
+
+    position: absolute;
 }
 
 #pic_div div {
-    float: left;
-}
+    float: left; 
 
-#pic_div div img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
 }
 
 #dot_list {
     /* width: 200px; */
     height: 20px;
     line-height: 20px;
+
     list-style: none;
+
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
 }
 
 #dot_list li {
     float: left;
+
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #fff;
+    
+    background-color: rgba(255,255,255,1);
+    
     margin-right: 10px;
-    display: inline-block;
+}
+
+#dot_list li:nth-child(1){
+    background-color:red;
+}
+.operate_button{
+    height: 80px;
+    width: 50px;
+    background-color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,1);
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 30px;
+    line-height: 80px;
+    text-align: center;
+
+    display: none;
+}
+
+#left_button{
+    left: 0;
+}
+
+#right_button{
+    right: 0;
 }
