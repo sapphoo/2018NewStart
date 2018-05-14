@@ -1,3 +1,5 @@
+**https://git-scm.com/book/zh/v2**
+
 ## 打开三种配置文件的方法
 
 执行下面这个命令：如果是Linux将打开 `/工作区目录/.git/config`文件, 如果是Windows:与Linux一样 
