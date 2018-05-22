@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+</head>
+
+<body>
+
+</body>
+
+<script language="javascript">
+      var jsversion = 1.0;
+    </script>
+    <script language="javascript1.1">
+      jsversion = 1.1;
+    </script>
+    <script language="javascript1.2">
+      jsversion = 1.2;
+    </script>
+    <script language="javascript1.3">
+      jsversion = 1.3;
+    </script>
+    <script language="javascript1.4">
+      jsversion = 1.4;
+    </script>
+    <script language="javascript1.5">
+      jsversion = 1.5;
+    </script>
+    <script language="javascript1.6">
+      jsversion = 1.6;
+    </script>
+    <script language="javascript1.7">
+      jsversion = 1.7;
+    </script>
+    <script language="javascript1.8">
+      jsversion = 1.8;
+    </script>
+    <script language="javascript1.9">
+      jsversion = 1.9;
+    </script>
+    <script language="javascript2.0">
+      jsversion = 2.0;
+</script>
+
+<script language="javascript">
+      document.write('Your browser claims to support JavaScript ' + jsversion)
+    </script>
+
+<script>
+    function createNewPerson(name) {
+        var obj = {};
+        obj.name = name;
+        obj.greeting = function () {
+            alert('Hi! I\'m ' + this.name + '.');
+        }
+        return obj;
+    }
+
+    function Person(name) {
+        this.name = name;
+        this.greeting = function () {
+            alert('Hi! I\'m ' + this.name + '.');
+        };
+    }
+
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            first,
+            last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function () {
+            var call = 'He';
+            if (this.gender === 'female') {
+                call = 'She';
+            }
+            var interestsString = call + ' likes ';
+            var len = this.interests.length;
+            for (var i = 0; i < len; i++) {
+                interestsString += interests[i];
+                if (i !== len - 1) {
+                    interestsString += ' and ';
+                }
+            }
+            alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.' + interestsString + '.');
+        };
+        this.greeting = function () {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        };
+    };
+    var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+    
+    Person.prototype.farewell = function () {
+        alert(this.name.first + ' has left the building. Bye for now!');
+    }
+
+    console.log(this);//Window对象
+    Person.prototype.fullName = this.name.first + ' ' + this.name.last;
+    //"undefined undefined"，这里this指向window，而非函数范围
+    Person.prototype.fullName = function(){
+        return(this.name.first + ' ' + this.name.last);
+    }
+
+
+</script>
+
+</html>
